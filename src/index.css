@@ -116,6 +116,14 @@
     font-family: 'Poppins', system-ui, sans-serif;
     @apply font-semibold tracking-tight text-secondary;
   }
+
+  [lang="ar"] body {
+    font-family: 'Cairo', system-ui, sans-serif;
+  }
+
+  [lang="ar"] h1, [lang="ar"] h2, [lang="ar"] h3, [lang="ar"] h4, [lang="ar"] h5, [lang="ar"] h6 {
+    font-family: 'Cairo', system-ui, sans-serif;
+  }
 }
 
 @layer components {

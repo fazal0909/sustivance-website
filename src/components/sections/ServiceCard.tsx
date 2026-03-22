@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, LucideIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface ServiceCardProps {
   title: string;
@@ -11,6 +12,9 @@ interface ServiceCardProps {
 }
 
 export default function ServiceCard({ title, description, icon: Icon, href, index = 0 }: ServiceCardProps) {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -33,8 +37,8 @@ export default function ServiceCard({ title, description, icon: Icon, href, inde
           {description}
         </p>
         <span className="flex items-center text-primary font-medium group-hover:gap-3 gap-2 transition-all">
-          Learn more
-          <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          {t('common.learnMore')}
+          <ArrowRight className={`w-4 h-4 transition-transform ${isRTL ? 'rotate-180' : ''}`} aria-hidden="true" />
         </span>
       </Link>
     </motion.article>

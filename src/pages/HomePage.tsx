@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useTranslation, Trans } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import SectionHeader from '@/components/sections/SectionHeader';
 import ServiceCard from '@/components/sections/ServiceCard';
@@ -28,85 +29,54 @@ import {
   Shield
 } from 'lucide-react';
 
-const services = [
-  {
-    title: 'Management & Policy Consulting',
-    description: 'Market research, feasibility studies, econometric models, and policy advisory for informed decisions.',
-    icon: BarChart3,
-    href: '/services/management-policy',
-  },
-  {
-    title: 'Business & Strategic Advisory',
-    description: 'Corporate strategy, market entry, governance, and smart city advisory for Saudi/GCC markets.',
-    icon: Briefcase,
-    href: '/services/business-strategy',
-  },
-  {
-    title: 'Sustainability & Environmental',
-    description: 'Environmental assessments, Vision 2030 alignment, SDG strategies, and climate studies.',
-    icon: Leaf,
-    href: '/services/sustainability',
-  },
-  {
-    title: 'Academic & Higher Education',
-    description: 'University strategy, curriculum development, research consulting, and program evaluation.',
-    icon: GraduationCap,
-    href: '/services/education',
-  },
-  {
-    title: 'Data & Analytics Solutions',
-    description: 'Survey design, statistical analysis, dashboard development, and forecasting models.',
-    icon: LineChart,
-    href: '/services/data-analytics',
-  },
-  {
-    title: 'Professional Writing',
-    description: 'Business proposals, grant writing, academic papers, policy briefs, and corporate documentation.',
-    icon: FileText,
-    href: '/services/writing',
-  },
+const servicesList = [
+  { id: 'management', icon: BarChart3, href: '/services/management-policy' },
+  { id: 'business', icon: Briefcase, href: '/services/business-strategy' },
+  { id: 'sustainability', icon: Leaf, href: '/services/sustainability' },
+  { id: 'education', icon: GraduationCap, href: '/services/education' },
+  { id: 'data', icon: LineChart, href: '/services/data-analytics' },
+  { id: 'writing', icon: FileText, href: '/services/writing' },
 ];
 
-
-const whyChooseUs = [
-  {
-    title: 'Saudi & GCC Market Expertise',
-    description: 'Deep understanding of local regulations, business culture, and Vision 2030 priorities.',
-    icon: Landmark,
-  },
-  {
-    title: 'Evidence-Based Approach',
-    description: 'Data-driven insights and rigorous analysis for confident decision-making.',
-    icon: LineChart,
-  },
-  {
-    title: 'Tailored Solutions',
-    description: 'Custom strategies designed for your specific industry and organizational needs.',
-    icon: Target,
-  },
-  {
-    title: 'Proven Track Record',
-    description: 'Trusted by businesses, governments, and institutions across the region.',
-    icon: Shield,
-  },
+const whyChooseUsList = [
+  { id: 'expertise', icon: Landmark },
+  { id: 'evidence', icon: LineChart },
+  { id: 'tailored', icon: Target },
+  { id: 'trackRecord', icon: Shield },
 ];
 
-const focusAreas = [
-  { name: 'Sustainability', icon: Leaf, category: 'environment' },
-  { name: 'Smart Cities', icon: Building2, category: 'infrastructure' },
-  { name: 'Tourism & Heritage', icon: Plane, category: 'societal' },
-  { name: 'Public Policy', icon: Landmark, category: 'economic' },
-  { name: 'Energy & Environment', icon: Zap, category: 'environment' },
-  { name: 'Agriculture & Food', icon: Wheat, category: 'environment' },
-  { name: 'Education', icon: BookOpen, category: 'societal' },
-  { name: 'Digital Economy', icon: Laptop, category: 'economic' },
-  { name: 'Healthcare', icon: HeartPulse, category: 'societal' },
-  { name: 'Real Estate', icon: Home, category: 'infrastructure' },
-  { name: 'Transportation', icon: Truck, category: 'infrastructure' },
+const focusAreasList = [
+  { id: 'sustainability', icon: Leaf, category: 'environment' },
+  { id: 'smartCities', icon: Building2, category: 'infrastructure' },
+  { id: 'tourism', icon: Plane, category: 'societal' },
+  { id: 'publicPolicy', icon: Landmark, category: 'economic' },
+  { id: 'energy', icon: Zap, category: 'environment' },
+  { id: 'agriculture', icon: Wheat, category: 'environment' },
+  { id: 'education', icon: BookOpen, category: 'societal' },
+  { id: 'digitalEconomy', icon: Laptop, category: 'economic' },
+  { id: 'healthcare', icon: HeartPulse, category: 'societal' },
+  { id: 'realEstate', icon: Home, category: 'infrastructure' },
+  { id: 'transportation', icon: Truck, category: 'infrastructure' },
 ];
 
+const industryIdMap: Record<string, string> = {
+  sustainability: 'sustainability',
+  smartCities: 'smart-cities',
+  tourism: 'tourism-culture',
+  publicPolicy: 'public-policy',
+  energy: 'energy-environment',
+  agriculture: 'agriculture-food',
+  education: 'education-human-capital',
+  digitalEconomy: 'digital-economy',
+  healthcare: 'healthcare',
+  realEstate: 'real-estate',
+  transportation: 'transportation-logistics',
+};
 
 export default function HomePage() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
   return (
     <>
       <SEO canonical="/" />
@@ -130,34 +100,34 @@ export default function HomePage() {
             >
               {/* Trust badge */}
               <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6">
-                ✓ Trusted by 50+ Organizations in Saudi Arabia
+                ✓ {t('hero.trustedBy')}
               </span>
 
               {/* H1 - Clear value proposition */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground leading-tight mb-6">
-                Strategic Consulting for{' '}
-                <span className="text-accent">Saudi Arabia</span>
+                <Trans i18nKey="hero.title">
+                  Strategic Consulting for <span className="text-accent">Saudi Arabia</span>
+                </Trans>
               </h1>
 
               {/* Clear benefit statement */}
               <p className="text-xl text-primary-foreground/90 leading-relaxed mb-4 max-w-xl">
-                We help businesses, governments, and institutions make better decisions with
-                <strong> expert research, strategy, and advisory services</strong> aligned with Vision 2030.
+                {t('hero.description')}
               </p>
 
               {/* Quick benefits list */}
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-primary-foreground/80 mb-8">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>Market Entry Strategy</span>
+                  <span>{t('hero.marketEntry')}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>Policy & Research</span>
+                  <span>{t('hero.policyResearch')}</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
-                  <span>Sustainability</span>
+                  <span>{t('hero.sustainability')}</span>
                 </li>
               </ul>
 
@@ -165,12 +135,12 @@ export default function HomePage() {
               <div className="flex flex-wrap gap-4">
                 <Button asChild variant="hero" size="xl">
                   <a href="https://wa.me/966578484894" target="_blank" rel="noopener noreferrer" className="group">
-                    Get a Free Consultation
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    {t('hero.cta')}
+                    <ArrowRight className={`w-5 h-5 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} aria-hidden="true" />
                   </a>
                 </Button>
                 <Button asChild variant="hero-outline" size="xl">
-                  <Link to="/services">View Our Services</Link>
+                  <Link to="/services">{t('hero.viewServices')}</Link>
                 </Button>
               </div>
             </motion.div>
@@ -185,7 +155,7 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-eco/30 rounded-3xl blur-2xl" aria-hidden="true" />
                 <img
                   src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&auto=format&fit=crop"
-                  alt="Modern Riyadh cityscape representing Saudi Arabia's Vision 2030 transformation and business growth"
+                  alt="Modern Riyadh cityscape"
                   className="relative rounded-3xl shadow-2xl"
                   loading="eager"
                   width="800"
@@ -226,13 +196,12 @@ export default function HomePage() {
               viewport={{ once: true }}
             >
               <h2 id="intro-heading" className="text-2xl md:text-3xl font-heading font-bold text-secondary mb-6">
-                Navigate Saudi Arabia's Dynamic Market with Confidence
+                {t('home.intro.title')}
               </h2>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-                Whether you're entering the Saudi market, developing policy frameworks, or implementing
-                sustainability initiatives, you need a partner who understands the local landscape.
-                <strong className="text-foreground"> Sustivance Consulting</strong> delivers actionable insights
-                and strategies that drive real results.
+                <Trans i18nKey="home.intro.description">
+                  Whether you're entering the Saudi market... <strong className="text-foreground">Sustivance Consulting</strong> ...
+                </Trans>
               </p>
             </motion.div>
           </div>
@@ -243,14 +212,14 @@ export default function HomePage() {
       <section className="section-padding bg-muted" aria-labelledby="why-choose-heading">
         <div className="container-custom">
           <SectionHeader
-            label="Why Choose Sustivance"
-            title="Your Strategic Partner in the Kingdom"
-            description="We combine deep local expertise with rigorous methodology to deliver consulting that works."
+            label={t('home.whyChooseUs.label')}
+            title={t('home.whyChooseUs.title')}
+            description={t('home.whyChooseUs.description')}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whyChooseUs.map((item, index) => (
+            {whyChooseUsList.map((item, index) => (
               <motion.article
-                key={index}
+                key={item.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -260,8 +229,12 @@ export default function HomePage() {
                 <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <item.icon className="w-6 h-6 text-primary" aria-hidden="true" />
                 </div>
-                <h3 className="font-heading font-semibold text-secondary mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+                <h3 className="font-heading font-semibold text-secondary mb-2">
+                  {t(`home.whyChooseUs.items.${item.id}.title`)}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {t(`home.whyChooseUs.items.${item.id}.description`)}
+                </p>
               </motion.article>
             ))}
           </div>
@@ -272,20 +245,27 @@ export default function HomePage() {
       <section className="section-padding" aria-labelledby="services-heading">
         <div className="container-custom">
           <SectionHeader
-            label="Our Services"
-            title="Comprehensive Consulting Solutions"
-            description="From market entry to sustainability strategy, we provide end-to-end advisory services."
+            label={t('home.services.label')}
+            title={t('home.services.title')}
+            description={t('home.services.description')}
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {services.map((service, index) => (
-              <ServiceCard key={service.title} {...service} index={index} />
+            {servicesList.map((service, index) => (
+              <ServiceCard
+                key={service.id}
+                title={t(`home.services.items.${service.id}.title`)}
+                description={t(`home.services.items.${service.id}.description`)}
+                icon={service.icon}
+                href={service.href}
+                index={index}
+              />
             ))}
           </div>
           <div className="text-center mt-10">
             <Button asChild variant="outline" size="lg">
               <Link to="/services" className="group">
-                View All Services
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                {t('home.services.viewAll')}
+                <ArrowRight className={`w-4 h-4 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} aria-hidden="true" />
               </Link>
             </Button>
           </div>
@@ -296,29 +276,29 @@ export default function HomePage() {
       <section className="section-padding bg-muted" aria-labelledby="industries-heading">
         <div className="container-custom">
           <SectionHeader
-            label="Industries We Serve"
-            title="Sector Expertise Aligned with Vision 2030"
-            description="Specialized consulting across Saudi Arabia's key economic sectors and strategic priorities."
+            label={t('home.industries.label')}
+            title={t('home.industries.title')}
+            description={t('home.industries.description')}
           />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-            {focusAreas.map((area, index) => (
+            {focusAreasList.map((area, index) => (
               <motion.div
-                key={area.name}
+                key={area.id}
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
               >
                 <Link
-                  to={`/industries#${area.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  to={`/industries#${industryIdMap[area.id] || area.id}`}
                   className="group flex flex-col items-center p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all"
-                  aria-label={`Learn about our ${area.name} consulting services`}
+                  aria-label={`Learn about our ${t(`home.industries.items.${area.id}`)} consulting services`}
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
                     <area.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" aria-hidden="true" />
                   </div>
                   <span className="text-sm font-medium text-secondary text-center group-hover:text-primary transition-colors">
-                    {area.name}
+                    {t(`home.industries.items.${area.id}`)}
                   </span>
                 </Link>
               </motion.div>
@@ -330,9 +310,9 @@ export default function HomePage() {
 
       {/* Final CTA Section */}
       <CTASection
-        title="Start Your Strategic Journey Today"
-        description="Partner with Sustivance for expert research, strategy, and solutions tailored to Saudi Arabia."
-        buttonText="Get Your Free Consultation"
+        title={t('home.cta.title')}
+        description={t('home.cta.description')}
+        buttonText={t('home.cta.button')}
       />
     </>
   );

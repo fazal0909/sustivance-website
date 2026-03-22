@@ -9,25 +9,23 @@ import {
   Users,
   CheckCircle
 } from 'lucide-react';
-
-const approachPoints = [
-  'Collaborative engagement with clients at every stage',
-  'Evidence-based methodology and rigorous analysis',
-  'Tailored solutions to unique organizational needs',
-  'Focus on delivering practical, measurable impact',
-];
+import { useTranslation } from 'react-i18next';
 
 export default function AboutPage() {
+  const { t } = useTranslation();
+
+  const approachPoints = t('about.approach.points', { returnObjects: true }) as string[];
+
   return (
     <>
       <SEO
-        title="About Us"
-        description="Learn about Sustivance Consulting - a boutique advisory firm in Saudi Arabia providing research, strategy, and consulting services to businesses, governments, and institutions."
+        title={t('about.meta.title')}
+        description={t('about.meta.description')}
         canonical="/about"
       />
       <HeroHeader
-        title="About Sustivance"
-        subtitle="A boutique advisory firm based in Saudi Arabia, providing research, strategy, and professional consulting services to businesses, governments, and academic institutions."
+        title={t('about.hero.title')}
+        subtitle={t('about.hero.subtitle')}
       />
 
       {/* About Section */}
@@ -41,20 +39,16 @@ export default function AboutPage() {
               viewport={{ once: true }}
             >
               <span className="inline-block px-4 py-1.5 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4">
-                Who We Are
+                {t('about.whoWeAre.label')}
               </span>
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-secondary mb-6">
-                Expert Advisory for the Kingdom and Beyond
+                {t('about.whoWeAre.title')}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Sustivance Consulting is a boutique advisory firm based in Saudi Arabia,
-                providing research, strategy, and professional consulting services to
-                businesses, governments, and academic institutions.
+                {t('about.whoWeAre.p1')}
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Our team brings extensive experience in policy analysis, business strategy,
-                sustainability, and data-driven decision-making. We are committed to delivering
-                practical solutions that create measurable impact for our clients.
+                {t('about.whoWeAre.p2')}
               </p>
             </motion.div>
             <motion.div
@@ -91,11 +85,10 @@ export default function AboutPage() {
                 <Eye className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-2xl font-heading font-bold text-secondary mb-4">
-                Our Vision
+                {t('about.vision.title')}
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                To support organizations in achieving informed, sustainable, and strategic outcomes
-                that drive lasting value for stakeholders and society.
+                {t('about.vision.description')}
               </p>
             </motion.div>
 
@@ -111,10 +104,10 @@ export default function AboutPage() {
                 <Target className="w-7 h-7 text-primary" />
               </div>
               <h3 className="text-2xl font-heading font-bold text-secondary mb-4">
-                Our Approach
+                {t('about.approach.title')}
               </h3>
               <ul className="space-y-3">
-                {approachPoints.map((point) => (
+                {approachPoints.map((point: string) => (
                   <li key={point} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-eco shrink-0 mt-0.5" />
                     <span className="text-muted-foreground">{point}</span>
@@ -130,31 +123,31 @@ export default function AboutPage() {
       <section className="section-padding">
         <div className="container-custom">
           <SectionHeader
-            label="Our Impact"
-            title="What We Deliver"
-            description="We help organizations across the Kingdom and GCC region achieve their strategic objectives."
+            label={t('about.impact.label')}
+            title={t('about.impact.title')}
+            description={t('about.impact.description')}
           />
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
                 icon: Target,
-                title: 'Strategic Clarity',
-                description: 'Clear direction and actionable roadmaps for organizational success.',
+                title: t('about.impact.items.strategic.title'),
+                description: t('about.impact.items.strategic.description'),
               },
               {
                 icon: Users,
-                title: 'Expert Partnership',
-                description: 'Dedicated consultants who work alongside your teams.',
+                title: t('about.impact.items.partnership.title'),
+                description: t('about.impact.items.partnership.description'),
               },
               {
                 icon: Eye,
-                title: 'Market Intelligence',
-                description: 'Deep insights into Saudi and GCC markets and trends.',
+                title: t('about.impact.items.intelligence.title'),
+                description: t('about.impact.items.intelligence.description'),
               },
               {
                 icon: CheckCircle,
-                title: 'Measurable Results',
-                description: 'Practical solutions that deliver tangible outcomes.',
+                title: t('about.impact.items.results.title'),
+                description: t('about.impact.items.results.description'),
               },
             ].map((item, index) => (
               <motion.div
@@ -180,9 +173,9 @@ export default function AboutPage() {
 
       {/* CTA */}
       <CTASection
-        title="Work with Sustivance"
-        description="Ready to partner with a trusted advisory firm for your strategic initiatives?"
-        buttonText="Get in Touch"
+        title={t('about.cta.title')}
+        description={t('about.cta.description')}
+        buttonText={t('about.cta.button')}
       />
     </>
   );

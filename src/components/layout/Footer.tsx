@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
 import logo from '@/assets/logo.png';
+import { useTranslation } from 'react-i18next';
 
 const XIcon = () => (
   <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden="true">
@@ -10,20 +11,23 @@ const XIcon = () => (
 
 const footerLinks = {
   services: [
-    { name: 'Management & Policy', href: '/services/management-policy' },
-    { name: 'Business Strategy', href: '/services/business-strategy' },
-    { name: 'Sustainability', href: '/services/sustainability' },
-    { name: 'Education Advisory', href: '/services/education' },
-    { name: 'Data & Analytics', href: '/services/data-analytics' },
+    { id: 'management', href: '/services/management-policy' },
+    { id: 'business', href: '/services/business-strategy' },
+    { id: 'sustainability', href: '/services/sustainability' },
+    { id: 'education', href: '/services/education' },
+    { id: 'data', href: '/services/data-analytics' },
   ],
   company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Industries', href: '/industries' },
-    { name: 'Contact', href: '/contact' },
+    { id: 'about', href: '/about' },
+    { id: 'industries', href: '/industries' },
+    { id: 'contact', href: '/contact' },
   ],
 };
 
 export default function Footer() {
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-secondary text-secondary-foreground" role="contentinfo">
       <div className="container-custom section-padding">
@@ -31,23 +35,22 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3" aria-label="Sustivance Consulting - Home">
-              <img 
-                src={logo} 
-                alt="Sustivance Research & Consulting" 
+              <img
+                src={logo}
+                alt="Sustivance Research & Consulting"
                 className="h-14 w-auto"
               />
               <div className="flex flex-col">
                 <span className="font-heading font-bold text-lg tracking-wide text-primary-foreground">
-                  SUSTIVANCE
+                  {t('brand.name')}
                 </span>
                 <span className="text-xs tracking-wider text-secondary-foreground/80">
-                  Research & Consulting
+                  {t('brand.subtitle')}
                 </span>
               </div>
             </Link>
             <p className="text-secondary-foreground/80 text-sm leading-relaxed">
-              Research, advisory, and professional consulting services for businesses, 
-              governments, and institutions in Saudi Arabia.
+              {t('footer.description')}
             </p>
             <div className="flex gap-4">
               <a
@@ -74,16 +77,16 @@ export default function Footer() {
           {/* Services Column */}
           <nav aria-label="Services navigation">
             <h2 className="font-heading font-semibold text-primary-foreground mb-6">
-              Services
+              {t('footer.sections.services')}
             </h2>
             <ul className="space-y-3">
               {footerLinks.services.map((link) => (
-                <li key={link.name}>
+                <li key={link.id}>
                   <Link
                     to={link.href}
                     className="text-sm text-secondary-foreground/70 hover:text-primary-foreground transition-colors"
                   >
-                    {link.name}
+                    {t(`footer.services.${link.id}`)}
                   </Link>
                 </li>
               ))}
@@ -93,16 +96,16 @@ export default function Footer() {
           {/* Company Column */}
           <nav aria-label="Company navigation">
             <h2 className="font-heading font-semibold text-primary-foreground mb-6">
-              Company
+              {t('footer.sections.company')}
             </h2>
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.id}>
                   <Link
                     to={link.href}
                     className="text-sm text-secondary-foreground/70 hover:text-primary-foreground transition-colors"
                   >
-                    {link.name}
+                    {t(`footer.company.${link.id}`)}
                   </Link>
                 </li>
               ))}
@@ -112,14 +115,14 @@ export default function Footer() {
           {/* Contact Column */}
           <div>
             <h2 className="font-heading font-semibold text-primary-foreground mb-6">
-              Contact
+              {t('footer.sections.contact')}
             </h2>
             <address className="not-italic">
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                   <span className="text-sm text-secondary-foreground/70">
-                    Riyadh, Saudi Arabia
+                    {t('footer.address')}
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
@@ -136,6 +139,7 @@ export default function Footer() {
                   <a
                     href="tel:+966545840300"
                     className="text-sm text-secondary-foreground/70 hover:text-primary-foreground transition-colors"
+                    dir="ltr"
                   >
                     +966 545840300
                   </a>
@@ -147,25 +151,10 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-secondary-foreground/10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-secondary-foreground/60">
-              © {new Date().getFullYear()} Sustivance Consulting. All rights reserved.
-            </p>
-            <nav aria-label="Legal navigation" className="flex gap-6">
-              <Link
-                to="/privacy"
-                className="text-sm text-secondary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                Privacy Policy
-              </Link>
-              <Link
-                to="/terms"
-                className="text-sm text-secondary-foreground/60 hover:text-primary-foreground transition-colors"
-              >
-                Terms of Service
-              </Link>
-            </nav>
-          </div>
+          <p className="text-sm text-secondary-foreground/60 mx-auto md:mx-0">
+            {t('footer.rights', { year: currentYear })}
+          </p>
+
         </div>
       </div>
     </footer>

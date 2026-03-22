@@ -3,43 +3,47 @@ import HeroHeader from '@/components/sections/HeroHeader';
 import { Button } from '@/components/ui/button';
 import { Mail, Phone, MapPin, Clock, MessageCircle, ArrowRight } from 'lucide-react';
 import SEO from '@/components/SEO';
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: 'Office Address',
-    content: 'Riyadh, Saudi Arabia',
-  },
-  {
-    icon: Mail,
-    title: 'Email',
-    content: 'info@sustivance.com',
-    href: 'mailto:info@sustivance.com',
-  },
-  {
-    icon: Phone,
-    title: 'Phone / WhatsApp',
-    content: '+966 578484894',
-    href: 'https://wa.me/966578484894',
-  },
-  {
-    icon: Clock,
-    title: 'Business Hours',
-    content: 'Sun - Thu: 9:00 AM - 6:00 PM (AST)',
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function ContactPage() {
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+
+  const contactInfo = [
+    {
+      icon: MapPin,
+      title: t('contact.info.office.title'),
+      content: t('contact.info.office.content'),
+    },
+    {
+      icon: Mail,
+      title: t('contact.info.email.title'),
+      content: 'info@sustivance.com',
+      href: 'mailto:info@sustivance.com',
+    },
+    {
+      icon: Phone,
+      title: t('contact.info.phone.title'),
+      content: '+966 578484894',
+      href: 'https://wa.me/966578484894',
+    },
+    {
+      icon: Clock,
+      title: t('contact.info.hours.title'),
+      content: t('contact.info.hours.content'),
+    },
+  ];
+
   return (
     <>
       <SEO
-        title="Contact Us"
-        description="Get in touch with Sustivance Consulting in Riyadh, Saudi Arabia. Contact us for consulting inquiries, project discussions, or partnership opportunities."
+        title={t('contact.meta.title')}
+        description={t('contact.meta.description')}
         canonical="/contact"
       />
       <HeroHeader
-        title="Get in Touch"
-        subtitle="We welcome inquiries from individuals, businesses, institutions, and government agencies."
+        title={t('contact.hero.title')}
+        subtitle={t('contact.hero.subtitle')}
       />
 
       <section className="section-padding">
@@ -53,10 +57,10 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-heading font-bold text-secondary mb-2">
-                Start a Conversation
+                {t('contact.conversation.title')}
               </h2>
               <p className="text-muted-foreground mb-8">
-                Reach out today to discuss your project or advisory needs. We typically respond within 24 hours.
+                {t('contact.conversation.description')}
               </p>
 
               <div className="bg-card p-8 rounded-2xl border border-border/50 text-center">
@@ -64,10 +68,10 @@ export default function ContactPage() {
                   <MessageCircle className="w-10 h-10 text-eco" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-secondary mb-2">
-                  Chat with Us on WhatsApp
+                  {t('contact.conversation.whatsapp.title')}
                 </h3>
                 <p className="text-muted-foreground mb-6">
-                  The fastest way to get in touch with our team for consultations, questions, or project discussions.
+                  {t('contact.conversation.whatsapp.description')}
                 </p>
                 <Button asChild size="lg" className="w-full sm:w-auto">
                   <a
@@ -76,15 +80,15 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="group"
                   >
-                    Start WhatsApp Chat
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    {t('contact.conversation.whatsapp.button')}
+                    <ArrowRight className={`w-4 h-4 transition-transform ${isRTL ? 'rotate-180 group-hover:-translate-x-1' : 'group-hover:translate-x-1'}`} />
                   </a>
                 </Button>
               </div>
 
               <div className="mt-8 p-6 bg-muted rounded-xl">
                 <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">Prefer email?</strong> Send us a message at{' '}
+                  <strong className="text-foreground">{t('contact.conversation.email.text')}</strong>{' '}
                   <a href="mailto:info@sustivance.com" className="text-primary hover:underline">
                     info@sustivance.com
                   </a>
@@ -100,7 +104,7 @@ export default function ContactPage() {
               viewport={{ once: true }}
             >
               <h2 className="text-2xl font-heading font-bold text-secondary mb-6">
-                Contact Information
+                {t('contact.info.title')}
               </h2>
               <div className="space-y-6 mb-8">
                 {contactInfo.map((info) => (
@@ -116,6 +120,7 @@ export default function ContactPage() {
                           target={info.href.startsWith('https') ? '_blank' : undefined}
                           rel={info.href.startsWith('https') ? 'noopener noreferrer' : undefined}
                           className="text-muted-foreground hover:text-primary transition-colors"
+                          dir="ltr"
                         >
                           {info.content}
                         </a>

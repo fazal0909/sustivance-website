@@ -3,26 +3,29 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import logo from '@/assets/logo.png';
+import { useTranslation } from 'react-i18next';
 
-const services = [
-  { name: 'Management & Policy Consulting', href: '/services/management-policy' },
-  { name: 'Business & Strategic Advisory', href: '/services/business-strategy' },
-  { name: 'Sustainability & Environmental', href: '/services/sustainability' },
-  { name: 'Academic & Higher Education', href: '/services/education' },
-  { name: 'Data & Analytics Solutions', href: '/services/data-analytics' },
-  { name: 'Professional Writing', href: '/services/writing' },
+const servicesList = [
+  { id: 'management', href: '/services/management-policy' },
+  { id: 'business', href: '/services/business-strategy' },
+  { id: 'sustainability', href: '/services/sustainability' },
+  { id: 'education', href: '/services/education' },
+  { id: 'data', href: '/services/data-analytics' },
+  { id: 'writing', href: '/services/writing' },
 ];
 
-const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services', hasDropdown: true },
-  { name: 'Industries', href: '/industries' },
-  { name: 'Contact', href: '/contact' },
+const navLinksList = [
+  { id: 'home', href: '/' },
+  { id: 'about', href: '/about' },
+  { id: 'services', href: '/services', hasDropdown: true },
+  { id: 'industries', href: '/industries' },
+  { id: 'contact', href: '/contact' },
 ];
 
 export default function Navbar() {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
@@ -47,34 +50,38 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled || !isHomePage
-          ? 'bg-background/95 backdrop-blur-md shadow-md'
+          ? 'bg-background/95 backdrop-blur-md shadow-md lg:bg-background/95 lg:backdrop-blur-md lg:shadow-md'
           : 'bg-transparent'
-      }`}
+      } ${isScrolled && 'max-lg:bg-transparent max-lg:backdrop-blur-none max-lg:shadow-none'}`}
       role="banner"
     >
       <nav className="container-custom" aria-label="Main navigation">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3" aria-label="Sustivance Consulting - Home">
-            <img 
-              src={logo} 
-              alt="Sustivance Research & Consulting" 
+          {/* Logo - Hidden on mobile after scroll */}
+          <Link 
+            to="/" 
+            className={`flex items-center gap-3 transition-opacity duration-300 ${isScrolled && 'lg:opacity-100 opacity-0 pointer-events-none lg:pointer-events-auto'}`} 
+            aria-label="Sustivance Consulting - Home"
+          >
+            <img
+              src={logo}
+              alt="Sustivance Research & Consulting"
               className="h-14 w-auto"
             />
             <div className="flex flex-col">
               <span className={`font-heading font-bold text-lg tracking-wide ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`}>
-                SUSTIVANCE
+                {t('brand.name')}
               </span>
               <span className={`text-xs tracking-wider ${isScrolled || !isHomePage ? 'text-muted-foreground' : 'text-primary-foreground/80'}`}>
-                Research & Consulting
+                {t('brand.subtitle')}
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1" role="menubar">
-            {navLinks.map((link) => (
-              <div key={link.name} className="relative" role="none">
+            {navLinksList.map((link) => (
+              <div key={link.id} className="relative" role="none">
                 {link.hasDropdown ? (
                   <div
                     className="relative"
@@ -83,14 +90,13 @@ export default function Navbar() {
                   >
                     <Link
                       to="/services"
-                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${
-                        isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
-                      }`}
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
+                        }`}
                       role="menuitem"
                       aria-haspopup="true"
                       aria-expanded={isServicesOpen}
                     >
-                      {link.name}
+                      {t(`nav.${link.id}`)}
                       <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </Link>
                     <AnimatePresence>
@@ -100,18 +106,18 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 pt-2"
+                          className={`absolute top-full ${i18n.language === 'ar' ? 'right-0' : 'left-0'} pt-2`}
                           role="menu"
                         >
                           <div className="bg-card rounded-xl shadow-xl border border-border p-2 min-w-[300px]">
-                            {services.map((service) => (
+                            {servicesList.map((service) => (
                               <Link
-                                key={service.name}
+                                key={service.id}
                                 to={service.href}
-                                className="block px-4 py-3 text-sm text-foreground hover:bg-muted rounded-lg transition-colors"
+                                className="block px-4 py-3 text-sm text-foreground hover:bg-muted rounded-lg transition-colors text-start"
                                 role="menuitem"
                               >
-                                {service.name}
+                                {t(`footer.services.${service.id}`)}
                               </Link>
                             ))}
                           </div>
@@ -122,13 +128,12 @@ export default function Navbar() {
                 ) : (
                   <Link
                     to={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${
-                      isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
-                    } ${location.pathname === link.href ? 'bg-muted/50' : ''}`}
+                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
+                      } ${location.pathname === link.href ? 'bg-muted/50' : ''}`}
                     role="menuitem"
                     aria-current={location.pathname === link.href ? 'page' : undefined}
                   >
-                    {link.name}
+                    {t(`nav.${link.id}`)}
                   </Link>
                 )}
               </div>
@@ -136,26 +141,32 @@ export default function Navbar() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <Button asChild variant={isScrolled || !isHomePage ? "default" : "hero"}>
-              <Link to="/contact">Get Free Consultation</Link>
+              <Link to="/contact">{t('nav.consultation')}</Link>
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="lg:hidden p-2"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            {isMobileMenuOpen ? (
-              <X className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
-            ) : (
-              <Menu className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
-            )}
-          </button>
+          {/* Mobile Menu Button + Language Switcher for Mobile */}
+          <div className="lg:hidden flex items-center gap-2">
+            <div className={`transition-opacity duration-300 ${isScrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
+              <LanguageSwitcher />
+            </div>
+            <button
+              className="p-2"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
+              ) : (
+                <Menu className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -171,8 +182,8 @@ export default function Navbar() {
               role="menu"
             >
               <div className="py-4 space-y-2">
-                {navLinks.map((link) => (
-                  <div key={link.name} role="none">
+                {navLinksList.map((link) => (
+                  <div key={link.id} role="none">
                     {link.hasDropdown ? (
                       <div>
                         <button
@@ -181,7 +192,7 @@ export default function Navbar() {
                           aria-expanded={isServicesOpen}
                           role="menuitem"
                         >
-                          {link.name}
+                          {t(`nav.${link.id}`)}
                           <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                         </button>
                         <AnimatePresence>
@@ -195,19 +206,19 @@ export default function Navbar() {
                             >
                               <Link
                                 to="/services"
-                                className="block px-8 py-2 text-sm text-primary font-medium hover:text-foreground"
+                                className="block px-8 py-2 text-sm text-primary font-medium hover:text-foreground text-start"
                                 role="menuitem"
                               >
-                                View All Services
+                                {t('nav.viewAllServices')}
                               </Link>
-                              {services.map((service) => (
+                              {servicesList.map((service) => (
                                 <Link
-                                  key={service.name}
+                                  key={service.id}
                                   to={service.href}
-                                  className="block px-8 py-2 text-sm text-muted-foreground hover:text-foreground"
+                                  className="block px-8 py-2 text-sm text-muted-foreground hover:text-foreground text-start"
                                   role="menuitem"
                                 >
-                                  {service.name}
+                                  {t(`footer.services.${service.id}`)}
                                 </Link>
                               ))}
                             </motion.div>
@@ -217,19 +228,20 @@ export default function Navbar() {
                     ) : (
                       <Link
                         to={link.href}
-                        className="block px-4 py-3 text-foreground font-medium hover:bg-muted/50 rounded-lg"
+                        className="block px-4 py-3 text-foreground font-medium hover:bg-muted/50 rounded-lg text-start"
                         role="menuitem"
                         aria-current={location.pathname === link.href ? 'page' : undefined}
                       >
-                        {link.name}
+                        {t(`nav.${link.id}`)}
                       </Link>
                     )}
                   </div>
                 ))}
                 <div className="px-4 pt-4">
                   <Button asChild className="w-full">
-                    <Link to="/contact">Get Free Consultation</Link>
+                    <Link to="/contact">{t('nav.consultation')}</Link>
                   </Button>
+
                 </div>
               </div>
             </motion.div>

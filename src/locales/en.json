@@ -1,0 +1,623 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "language": "Language",
+        "english": "English",
+        "arabic": "Arabic",
+        "learnMore": "Learn more",
+        "viewAll": "View All",
+        "readMore": "Read More"
+    },
+    "brand": {
+        "name": "SUSTIVANCE",
+        "subtitle": "Research & Consulting"
+    },
+    "meta": {
+        "default": {
+            "title": "Sustivance Consulting | Strategy & Policy Advisory in Saudi Arabia",
+            "description": "Expert consulting for businesses, governments & institutions in Saudi Arabia. Strategy, policy, sustainability & data analytics aligned with Vision 2030.",
+            "keywords": "Saudi Arabia consulting, GCC advisory, Vision 2030 consultant, policy consulting Riyadh, business strategy Saudi, sustainability consulting KSA"
+        }
+    },
+    "nav": {
+        "home": "Home",
+        "about": "About Us",
+        "services": "Services",
+        "industries": "Industries",
+        "contact": "Contact",
+        "getStarted": "Get Started",
+        "viewAllServices": "View All Services",
+        "consultation": "Get Free Consultation"
+    },
+    "hero": {
+        "trustedBy": "Trusted by 50+ Organizations in Saudi Arabia",
+        "title": "Strategic Consulting for <1>Saudi Arabia</1>",
+        "description": "We help businesses, governments, and institutions make better decisions with expert research, strategy, and advisory services aligned with Vision 2030.",
+        "cta": "Get a Free Consultation",
+        "viewServices": "View Our Services",
+        "marketEntry": "Market Entry Strategy",
+        "policyResearch": "Policy & Research",
+        "sustainability": "Sustainability"
+    },
+    "home": {
+        "intro": {
+            "title": "Navigate Saudi Arabia's Dynamic Market with Confidence",
+            "description": "Whether you're entering the Saudi market, developing policy frameworks, or implementing sustainability initiatives, you need a partner who understands the local landscape. <1>Sustivance Consulting</1> delivers actionable insights and strategies that drive real results."
+        },
+        "whyChooseUs": {
+            "label": "Why Choose Sustivance",
+            "title": "Your Strategic Partner in the Kingdom",
+            "description": "We combine deep local expertise with rigorous methodology to deliver consulting that works.",
+            "items": {
+                "expertise": {
+                    "title": "Saudi & GCC Market Expertise",
+                    "description": "Deep understanding of local regulations, business culture, and Vision 2030 priorities."
+                },
+                "evidence": {
+                    "title": "Evidence-Based Approach",
+                    "description": "Data-driven insights and rigorous analysis for confident decision-making."
+                },
+                "tailored": {
+                    "title": "Tailored Solutions",
+                    "description": "Custom strategies designed for your specific industry and organizational needs."
+                },
+                "trackRecord": {
+                    "title": "Proven Track Record",
+                    "description": "Trusted by businesses, governments, and institutions across the region."
+                }
+            }
+        },
+        "services": {
+            "label": "Our Services",
+            "title": "Comprehensive Consulting Solutions",
+            "description": "From market entry to sustainability strategy, we provide end-to-end advisory services.",
+            "viewAll": "View All Services",
+            "items": {
+                "management": {
+                    "title": "Management & Policy Consulting",
+                    "description": "Market research, feasibility studies, econometric models, and policy advisory for informed decisions."
+                },
+                "business": {
+                    "title": "Business & Strategic Advisory",
+                    "description": "Corporate strategy, market entry, governance, and smart city advisory for Saudi/GCC markets."
+                },
+                "sustainability": {
+                    "title": "Sustainability & Environmental",
+                    "description": "Environmental assessments, Vision 2030 alignment, SDG strategies, and climate studies."
+                },
+                "education": {
+                    "title": "Academic & Higher Education",
+                    "description": "University strategy, curriculum development, research consulting, and program evaluation."
+                },
+                "data": {
+                    "title": "Data & Analytics Solutions",
+                    "description": "Survey design, statistical analysis, dashboard development, and forecasting models."
+                },
+                "writing": {
+                    "title": "Professional Writing",
+                    "description": "Business proposals, grant writing, academic papers, policy briefs, and corporate documentation."
+                }
+            }
+        },
+        "industries": {
+            "label": "Industries We Serve",
+            "title": "Sector Expertise Aligned with Vision 2030",
+            "description": "Specialized consulting across Saudi Arabia's key economic sectors and strategic priorities.",
+            "items": {
+                "sustainability": "Sustainability",
+                "smartCities": "Smart Cities",
+                "tourism": "Tourism & Heritage",
+                "publicPolicy": "Public Policy",
+                "energy": "Energy & Environment",
+                "agriculture": "Agriculture & Food",
+                "education": "Education",
+                "digitalEconomy": "Digital Economy",
+                "healthcare": "Healthcare",
+                "realEstate": "Real Estate",
+                "transportation": "Transportation"
+            }
+        },
+        "cta": {
+            "title": "Start Your Strategic Journey Today",
+            "description": "Partner with Sustivance for expert research, strategy, and solutions tailored to Saudi Arabia.",
+            "button": "Get Your Free Consultation"
+        }
+    },
+    "about": {
+        "meta": {
+            "title": "About Us",
+            "description": "Learn about Sustivance Consulting - a boutique advisory firm in Saudi Arabia providing research, strategy, and consulting services to businesses, governments, and institutions."
+        },
+        "hero": {
+            "title": "About Sustivance",
+            "subtitle": "A boutique advisory firm based in Saudi Arabia, providing research, strategy, and professional consulting services to businesses, governments, and academic institutions."
+        },
+        "whoWeAre": {
+            "label": "Who We Are",
+            "title": "Expert Advisory for the Kingdom and Beyond",
+            "p1": "Sustivance Consulting is a boutique advisory firm based in Saudi Arabia, providing research, strategy, and professional consulting services to businesses, governments, and academic institutions.",
+            "p2": "Our team brings extensive experience in policy analysis, business strategy, sustainability, and data-driven decision-making. We are committed to delivering practical solutions that create measurable impact for our clients."
+        },
+        "vision": {
+            "title": "Our Vision",
+            "description": "To support organizations in achieving informed, sustainable, and strategic outcomes that drive lasting value for stakeholders and society."
+        },
+        "approach": {
+            "title": "Our Approach",
+            "points": [
+                "Collaborative engagement with clients at every stage",
+                "Evidence-based methodology and rigorous analysis",
+                "Tailored solutions to unique organizational needs",
+                "Focus on delivering practical, measurable impact"
+            ]
+        },
+        "impact": {
+            "label": "Our Impact",
+            "title": "What We Deliver",
+            "description": "We help organizations across the Kingdom and GCC region achieve their strategic objectives.",
+            "items": {
+                "strategic": {
+                    "title": "Strategic Clarity",
+                    "description": "Clear direction and actionable roadmaps for organizational success."
+                },
+                "partnership": {
+                    "title": "Expert Partnership",
+                    "description": "Dedicated consultants who work alongside your teams."
+                },
+                "intelligence": {
+                    "title": "Market Intelligence",
+                    "description": "Deep insights into Saudi and GCC markets and trends."
+                },
+                "results": {
+                    "title": "Measurable Results",
+                    "description": "Practical solutions that deliver tangible outcomes."
+                }
+            }
+        },
+        "cta": {
+            "title": "Work with Sustivance",
+            "description": "Ready to partner with a trusted advisory firm for your strategic initiatives?",
+            "button": "Get in Touch"
+        }
+    },
+    "servicesPage": {
+        "meta": {
+            "title": "Services",
+            "description": "Explore our comprehensive consulting services: strategy, policy, sustainability, education, data analytics, and professional writing for Saudi Arabia and GCC."
+        },
+        "hero": {
+            "title": "Our Services",
+            "subtitle": "Comprehensive consulting solutions across strategy, policy, sustainability, education, and data analytics for businesses, governments, and institutions."
+        },
+        "offer": "What We Offer",
+        "cta": {
+            "title": "Ready to Get Started?",
+            "description": "Contact us to discuss how we can support your project or advisory needs.",
+            "button": "Request Consultation"
+        },
+        "list": {
+            "management-policy": {
+                "title": "Management & Policy Consulting",
+                "description": "Strategic research and advisory for informed decision-making across public and private sectors.",
+                "offerings": [
+                    "Market research & feasibility studies (market entry, competitor benchmarking, demand forecasting)",
+                    "Econometric & forecasting models",
+                    "Social, economic & environmental impact evaluations",
+                    "Policy research & strategic recommendations",
+                    "Public policy advisory & governance support"
+                ]
+            },
+            "business-strategy": {
+                "title": "Business & Strategic Advisory",
+                "description": "Comprehensive business strategy and market entry support for Saudi Arabia and GCC markets.",
+                "offerings": [
+                    "Corporate strategy & business planning",
+                    "Market entry & investment advisory (Saudi/GCC)",
+                    "Governance, risk & compliance (GRC)",
+                    "Smart city & infrastructure advisory"
+                ]
+            },
+            "sustainability": {
+                "title": "Sustainability & Environmental Consulting",
+                "description": "Environmental strategy aligned with Vision 2030 and global sustainability frameworks.",
+                "offerings": [
+                    "Environmental & social impact assessments (EIA/SIA)",
+                    "Vision 2030 & SDG alignment strategies",
+                    "Sustainability research & advisory",
+                    "Climate & resource management studies"
+                ]
+            },
+            "education": {
+                "title": "Academic & Higher Education Advisory",
+                "description": "Strategic consulting for universities, schools, and educational institutions.",
+                "offerings": [
+                    "University strategy & curriculum advisory",
+                    "School teacher consulting and evaluation programs",
+                    "Research & curriculum development consulting",
+                    "Student mentoring & scholarship guidance",
+                    "International university partnerships",
+                    "Program evaluation & quality assurance"
+                ]
+            },
+            "data-analytics": {
+                "title": "Data & Analytics Solutions",
+                "description": "Data-driven insights and analytics for evidence-based decision making.",
+                "offerings": [
+                    "Survey design & data collection",
+                    "Statistical & econometric analysis",
+                    "Dashboard development & visualization",
+                    "Forecasting & time-series modeling",
+                    "Operational data analysis and on-demand insights"
+                ]
+            },
+            "writing": {
+                "title": "Professional Writing & Documentation",
+                "description": "Expert writing services for business, academic, and policy documents.",
+                "offerings": [
+                    "Business proposals & investor documents",
+                    "Grant & funding proposals",
+                    "Academic & technical writing",
+                    "Policy briefs & concept notes",
+                    "Corporate profiles & presentations",
+                    "RFPs and project writing"
+                ]
+            }
+        },
+        "details": {
+            "common": {
+                "challenges": "Client Challenges",
+                "solutions": "Our Solutions",
+                "deliver": "What We Deliver"
+            },
+            "management-policy": {
+                "title": "Management & Policy Consulting",
+                "subtitle": "Strategic research and advisory for informed decision-making across public and private sectors.",
+                "challenges": [
+                    "Navigating complex market dynamics in emerging economies",
+                    "Making data-driven decisions with limited market research",
+                    "Developing policies that balance growth with sustainability",
+                    "Understanding regulatory landscapes and compliance requirements"
+                ],
+                "solutions": [
+                    {
+                        "title": "Market Research & Feasibility Studies",
+                        "desc": "Market entry analysis, competitor benchmarking, and demand forecasting"
+                    },
+                    {
+                        "title": "Econometric & Forecasting Models",
+                        "desc": "Quantitative analysis for strategic planning and risk assessment"
+                    },
+                    {
+                        "title": "Impact Evaluations",
+                        "desc": "Social, economic, and environmental impact assessments"
+                    },
+                    {
+                        "title": "Policy Research & Advisory",
+                        "desc": "Strategic recommendations and public policy guidance"
+                    }
+                ],
+                "kpis": [
+                    "100+ Projects Delivered",
+                    "GCC Market Expertise",
+                    "Evidence-Based Insights"
+                ]
+            },
+            "business-strategy": {
+                "title": "Business & Strategic Advisory",
+                "subtitle": "Comprehensive business strategy and market entry support for Saudi Arabia and GCC markets.",
+                "challenges": [
+                    "Entering new markets without local knowledge and networks",
+                    "Aligning corporate strategy with regional business culture",
+                    "Managing governance, risk, and compliance in evolving regulatory environments",
+                    "Understanding opportunities in smart city and infrastructure sectors"
+                ],
+                "solutions": [
+                    {
+                        "title": "Corporate Strategy & Planning",
+                        "desc": "Business planning and strategic roadmap development"
+                    },
+                    {
+                        "title": "Market Entry Advisory",
+                        "desc": "Saudi and GCC market entry strategies and investment guidance"
+                    },
+                    {
+                        "title": "Governance, Risk & Compliance",
+                        "desc": "GRC frameworks and regulatory compliance support"
+                    },
+                    {
+                        "title": "Smart City Advisory",
+                        "desc": "Infrastructure and urban development consulting"
+                    }
+                ],
+                "kpis": [
+                    "Saudi/GCC Focus",
+                    "Strategic Partnerships",
+                    "Market Success"
+                ]
+            },
+            "sustainability": {
+                "title": "Sustainability & Environmental Consulting",
+                "subtitle": "Environmental strategy aligned with Vision 2030 and global sustainability frameworks.",
+                "challenges": [
+                    "Meeting Vision 2030 sustainability targets and commitments",
+                    "Conducting thorough environmental and social assessments",
+                    "Aligning business operations with SDG frameworks",
+                    "Managing climate risks and resource efficiency"
+                ],
+                "solutions": [
+                    {
+                        "title": "Environmental Impact Assessments",
+                        "desc": "Comprehensive EIA and SIA for projects and developments"
+                    },
+                    {
+                        "title": "Vision 2030 Alignment",
+                        "desc": "Strategy development aligned with Saudi Arabia's Vision 2030"
+                    },
+                    {
+                        "title": "SDG Integration",
+                        "desc": "Sustainable Development Goals mapping and reporting"
+                    },
+                    {
+                        "title": "Climate & Resource Studies",
+                        "desc": "Climate risk assessment and resource management"
+                    }
+                ],
+                "kpis": [
+                    "Vision 2030 Aligned",
+                    "SDG Expertise",
+                    "Environmental Excellence"
+                ]
+            },
+            "education": {
+                "title": "Academic & Higher Education Advisory",
+                "subtitle": "Strategic consulting for universities, schools, and educational institutions.",
+                "challenges": [
+                    "Developing curricula that meet international standards",
+                    "Building strategic partnerships with global institutions",
+                    "Improving program quality and student outcomes",
+                    "Navigating accreditation and quality assurance requirements"
+                ],
+                "solutions": [
+                    {
+                        "title": "University Strategy",
+                        "desc": "Institutional strategy and curriculum advisory"
+                    },
+                    {
+                        "title": "Teacher Development",
+                        "desc": "School teacher consulting and evaluation programs"
+                    },
+                    {
+                        "title": "Research Consulting",
+                        "desc": "Research and curriculum development support"
+                    },
+                    {
+                        "title": "Quality Assurance",
+                        "desc": "Program evaluation and accreditation guidance"
+                    }
+                ],
+                "kpis": [
+                    "Academic Excellence",
+                    "Global Partnerships",
+                    "Quality Assurance"
+                ]
+            },
+            "data-analytics": {
+                "title": "Data & Analytics Solutions",
+                "subtitle": "Data-driven insights and analytics for evidence-based decision making.",
+                "challenges": [
+                    "Converting raw data into actionable business insights",
+                    "Building effective data collection and survey methodologies",
+                    "Developing forecasting models for strategic planning",
+                    "Creating visual dashboards for stakeholder communication"
+                ],
+                "solutions": [
+                    {
+                        "title": "Survey Design",
+                        "desc": "Survey methodology and data collection strategies"
+                    },
+                    {
+                        "title": "Statistical Analysis",
+                        "desc": "Advanced statistical and econometric analysis"
+                    },
+                    {
+                        "title": "Dashboard Development",
+                        "desc": "Interactive visualization and reporting tools"
+                    },
+                    {
+                        "title": "Forecasting Models",
+                        "desc": "Time-series modeling and predictive analytics"
+                    }
+                ],
+                "kpis": [
+                    "Data-Driven Insights",
+                    "Advanced Analytics",
+                    "Visual Reporting"
+                ]
+            },
+            "writing": {
+                "title": "Professional Writing & Documentation",
+                "subtitle": "Expert writing services for business, academic, and policy documents.",
+                "challenges": [
+                    "Crafting compelling business proposals and investor presentations",
+                    "Developing successful grant and funding applications",
+                    "Producing high-quality academic and technical documentation",
+                    "Creating impactful policy briefs and strategic communications"
+                ],
+                "solutions": [
+                    {
+                        "title": "Business Proposals",
+                        "desc": "Investor documents and corporate presentations"
+                    },
+                    {
+                        "title": "Grant Writing",
+                        "desc": "Funding proposals and application support"
+                    },
+                    {
+                        "title": "Academic Writing",
+                        "desc": "Technical papers and research publications"
+                    },
+                    {
+                        "title": "Policy Documentation",
+                        "desc": "Policy briefs, concept notes, and RFPs"
+                    }
+                ],
+                "kpis": [
+                    "Expert Writing",
+                    "Professional Quality",
+                    "Impactful Documents"
+                ]
+            }
+        }
+    },
+    "industriesPage": {
+        "meta": {
+            "title": "Industries & Focus Areas",
+            "description": "Specialized consulting across Saudi Arabia's key sectors: sustainability, smart cities, tourism, education, healthcare, and digital transformation aligned with Vision 2030."
+        },
+        "hero": {
+            "title": "Areas of Focus",
+            "subtitle": "Comprehensive consulting services across Saudi Arabia's strategic sectors aligned with Vision 2030 priorities."
+        },
+        "cta": {
+            "title": "Need a Custom Industry Solution?",
+            "description": "Our experts understand the unique challenges and opportunities in each sector.",
+            "button": "Discuss Your Industry"
+        },
+        "groups": {
+            "Sustainability & Environment": {
+                "name": "Sustainability & Environment",
+                "industries": {
+                    "sustainability": {
+                        "name": "Sustainability",
+                        "description": "Sustainable development strategies aligned with global frameworks and Vision 2030."
+                    },
+                    "energy-environment": {
+                        "name": "Energy & Environment",
+                        "description": "Clean energy transitions and environmental management solutions."
+                    },
+                    "agriculture-food": {
+                        "name": "Agriculture & Food Security",
+                        "description": "Agricultural development and food security initiatives for the Kingdom."
+                    }
+                }
+            },
+            "Urban & Infrastructure": {
+                "name": "Urban & Infrastructure",
+                "industries": {
+                    "smart-cities": {
+                        "name": "Smart Cities & Urban Development",
+                        "description": "Smart city planning and urban development consulting for mega-projects."
+                    },
+                    "real-estate": {
+                        "name": "Real Estate",
+                        "description": "Real estate market analysis, feasibility studies, and investment advisory."
+                    },
+                    "transportation-logistics": {
+                        "name": "Transportation & Logistics",
+                        "description": "Transport infrastructure planning and logistics optimization."
+                    }
+                }
+            },
+            "Societal & Human Development": {
+                "name": "Societal & Human Development",
+                "industries": {
+                    "tourism-culture": {
+                        "name": "Tourism, Culture & Heritage",
+                        "description": "Tourism strategy and cultural heritage preservation consulting."
+                    },
+                    "education-human-capital": {
+                        "name": "Education & Human Capital Development",
+                        "description": "Educational institution strategy and workforce development."
+                    },
+                    "healthcare": {
+                        "name": "Healthcare Transformation",
+                        "description": "Healthcare system strategy and transformation advisory."
+                    }
+                }
+            },
+            "Economic & Digital Transformation": {
+                "name": "Economic & Digital Transformation",
+                "industries": {
+                    "digital-economy": {
+                        "name": "Digital Economy & FinTech",
+                        "description": "Digital transformation strategy and FinTech consulting."
+                    },
+                    "public-policy": {
+                        "name": "Public Policy & Governance",
+                        "description": "Policy analysis, governance advisory, and institutional reform."
+                    }
+                }
+            }
+        }
+    },
+    "contact": {
+        "meta": {
+            "title": "Contact Us",
+            "description": "Get in touch with Sustivance Consulting in Riyadh, Saudi Arabia. Contact us for consulting inquiries, project discussions, or partnership opportunities."
+        },
+        "hero": {
+            "title": "Get in Touch",
+            "subtitle": "We welcome inquiries from individuals, businesses, institutions, and government agencies."
+        },
+        "conversation": {
+            "title": "Start a Conversation",
+            "description": "Reach out today to discuss your project or advisory needs. We typically respond within 24 hours.",
+            "whatsapp": {
+                "title": "Chat with Us on WhatsApp",
+                "description": "The fastest way to get in touch with our team for consultations, questions, or project discussions.",
+                "button": "Start WhatsApp Chat"
+            },
+            "email": {
+                "text": "Prefer email? Send us a message at"
+            }
+        },
+        "info": {
+            "title": "Contact Information",
+            "office": {
+                "title": "Office Address",
+                "content": "Riyadh, Saudi Arabia"
+            },
+            "email": {
+                "title": "Email"
+            },
+            "phone": {
+                "title": "Phone / WhatsApp"
+            },
+            "hours": {
+                "title": "Business Hours",
+                "content": "Sun - Thu: 9:00 AM - 6:00 PM (AST)"
+            }
+        }
+    },
+    "notFound": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for does not exist.",
+        "button": "Return to Home",
+        "oops": "Oops! Page not found"
+    },
+    "footer": {
+        "rights": "© {{year}} Sustivance. All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "description": "Research, advisory, and professional consulting services for businesses, governments, and institutions in Saudi Arabia.",
+        "address": "Riyadh, Saudi Arabia",
+        "sections": {
+            "services": "Services",
+            "company": "Company",
+            "contact": "Contact"
+        },
+        "services": {
+            "management": "Management & Policy",
+            "business": "Business Strategy",
+            "sustainability": "Sustainability",
+            "education": "Education Advisory",
+            "data": "Data & Analytics",
+            "writing": "Professional Writing"
+        },
+        "company": {
+            "about": "About Us",
+            "industries": "Industries",
+            "contact": "Contact"
+        }
+    }
+}

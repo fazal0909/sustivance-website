@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import HeroHeader from '@/components/sections/HeroHeader';
 import CTASection from '@/components/sections/CTASection';
-import { Button } from '@/components/ui/button';
 import SEO from '@/components/SEO';
 import {
   Leaf,
@@ -16,105 +15,63 @@ import {
   BookOpen,
   HeartPulse,
   Laptop,
-  Landmark,
-  TrendingUp,
-  CheckCircle
+  Landmark
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-const industryGroups = [
+const icons: Record<string, any> = {
+  'sustainability': Leaf,
+  'energy-environment': Zap,
+  'agriculture-food': Wheat,
+  'smart-cities': Building2,
+  'real-estate': Home,
+  'transportation-logistics': Truck,
+  'tourism-culture': Plane,
+  'education-human-capital': BookOpen,
+  'healthcare': HeartPulse,
+  'digital-economy': Laptop,
+  'public-policy': Landmark
+};
+
+const groupsStructure = [
   {
-    name: 'Sustainability & Environment',
+    nameKey: 'Sustainability & Environment',
     color: 'eco',
-    industries: [
-      {
-        id: 'sustainability',
-        name: 'Sustainability',
-        icon: Leaf,
-        description: 'Sustainable development strategies aligned with global frameworks and Vision 2030.',
-      },
-      {
-        id: 'energy-environment',
-        name: 'Energy & Environment',
-        icon: Zap,
-        description: 'Clean energy transitions and environmental management solutions.',
-      },
-      {
-        id: 'agriculture-food',
-        name: 'Agriculture & Food Security',
-        icon: Wheat,
-        description: 'Agricultural development and food security initiatives for the Kingdom.',
-      },
-    ],
+    industries: ['sustainability', 'energy-environment', 'agriculture-food']
   },
   {
-    name: 'Urban & Infrastructure',
+    nameKey: 'Urban & Infrastructure',
     color: 'primary',
-    industries: [
-      {
-        id: 'smart-cities',
-        name: 'Smart Cities & Urban Development',
-        icon: Building2,
-        description: 'Smart city planning and urban development consulting for mega-projects.',
-      },
-      {
-        id: 'real-estate',
-        name: 'Real Estate',
-        icon: Home,
-        description: 'Real estate market analysis, feasibility studies, and investment advisory.',
-      },
-      {
-        id: 'transportation-logistics',
-        name: 'Transportation & Logistics',
-        icon: Truck,
-        description: 'Transport infrastructure planning and logistics optimization.',
-      },
-    ],
+    industries: ['smart-cities', 'real-estate', 'transportation-logistics']
   },
   {
-    name: 'Societal & Human Development',
+    nameKey: 'Societal & Human Development',
     color: 'accent',
-    industries: [
-      {
-        id: 'tourism-culture',
-        name: 'Tourism, Culture & Heritage',
-        icon: Plane,
-        description: 'Tourism strategy and cultural heritage preservation consulting.',
-      },
-      {
-        id: 'education-human-capital',
-        name: 'Education & Human Capital Development',
-        icon: BookOpen,
-        description: 'Educational institution strategy and workforce development.',
-      },
-      {
-        id: 'healthcare',
-        name: 'Healthcare Transformation',
-        icon: HeartPulse,
-        description: 'Healthcare system strategy and transformation advisory.',
-      },
-    ],
+    industries: ['tourism-culture', 'education-human-capital', 'healthcare']
   },
   {
-    name: 'Economic & Digital Transformation',
+    nameKey: 'Economic & Digital Transformation',
     color: 'secondary',
-    industries: [
-      {
-        id: 'digital-economy',
-        name: 'Digital Economy & FinTech',
-        icon: Laptop,
-        description: 'Digital transformation strategy and FinTech consulting.',
-      },
-      {
-        id: 'public-policy',
-        name: 'Public Policy & Governance',
-        icon: Landmark,
-        description: 'Policy analysis, governance advisory, and institutional reform.',
-      },
-    ],
-  },
+    industries: ['digital-economy', 'public-policy']
+  }
 ];
 
 export default function IndustriesPage() {
+  const { t } = useTranslation();
+
+  // Create localized Industry Groups data
+  const industryGroups = groupsStructure.map(group => ({
+    name: t(`industriesPage.groups.${group.nameKey}.name`),
+    originalName: group.nameKey,
+    color: group.color,
+    industries: group.industries.map(indId => ({
+      id: indId,
+      name: t(`industriesPage.groups.${group.nameKey}.industries.${indId}.name`),
+      description: t(`industriesPage.groups.${group.nameKey}.industries.${indId}.description`),
+      icon: icons[indId]
+    }))
+  }));
+
   const [activeGroup, setActiveGroup] = useState(industryGroups[0].name);
   const location = useLocation();
 
@@ -131,15 +88,16 @@ export default function IndustriesPage() {
   }, [location]);
 
   useEffect(() => {
+    // We use the original English NameKey for IDs to keep them consistent across languages for scrolling
     const handleScroll = () => {
-      const groups = industryGroups.map((group) => ({
+      const groupElements = industryGroups.map((group) => ({
         name: group.name,
-        element: document.getElementById(group.name.toLowerCase().replace(/\s+/g, '-')),
+        element: document.getElementById(group.originalName.toLowerCase().replace(/\s+/g, '-')),
       }));
 
       const scrollPosition = window.scrollY + 250;
 
-      groups.forEach((group) => {
+      groupElements.forEach((group) => {
         if (group.element) {
           const sectionTop = group.element.offsetTop;
           const sectionBottom = sectionTop + group.element.offsetHeight;
@@ -152,10 +110,10 @@ export default function IndustriesPage() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [industryGroups]);
 
-  const scrollToGroup = (name: string) => {
-    const element = document.getElementById(name.toLowerCase().replace(/\s+/g, '-'));
+  const scrollToGroup = (originalName: string) => {
+    const element = document.getElementById(originalName.toLowerCase().replace(/\s+/g, '-'));
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -164,18 +122,18 @@ export default function IndustriesPage() {
   return (
     <>
       <SEO
-        title="Industries & Focus Areas"
-        description="Specialized consulting across Saudi Arabia's key sectors: sustainability, smart cities, tourism, education, healthcare, and digital transformation aligned with Vision 2030."
+        title={t('industriesPage.meta.title')}
+        description={t('industriesPage.meta.description')}
         canonical="/industries"
       />
       <HeroHeader
-        title="Areas of Focus"
-        subtitle="Comprehensive consulting services across Saudi Arabia's strategic sectors aligned with Vision 2030 priorities."
+        title={t('industriesPage.hero.title')}
+        subtitle={t('industriesPage.hero.subtitle')}
       />
 
       <section className="section-padding">
         <div className="container-custom">
-          <div className="flex gap-12">
+          <div className="flex gap-12 flex-col lg:flex-row">
             {/* Sticky Navigation - Desktop */}
             <div className="hidden lg:block w-72 shrink-0">
               <div className="sticky top-28">
@@ -183,10 +141,10 @@ export default function IndustriesPage() {
                   {industryGroups.map((group) => (
                     <button
                       key={group.name}
-                      onClick={() => scrollToGroup(group.name)}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all ${activeGroup === group.name
-                          ? 'bg-primary text-primary-foreground'
-                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+                      onClick={() => scrollToGroup(group.originalName)}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-start transition-all ${activeGroup === group.name
+                        ? 'bg-primary text-primary-foreground'
+                        : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                         }`}
                     >
                       <span className="text-sm font-medium">{group.name}</span>
@@ -198,10 +156,10 @@ export default function IndustriesPage() {
 
             {/* Industry Groups */}
             <div className="flex-1 space-y-20">
-              {industryGroups.map((group, groupIndex) => (
+              {industryGroups.map((group) => (
                 <motion.div
                   key={group.name}
-                  id={group.name.toLowerCase().replace(/\s+/g, '-')}
+                  id={group.originalName.toLowerCase().replace(/\s+/g, '-')}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
@@ -248,9 +206,9 @@ export default function IndustriesPage() {
       </section>
 
       <CTASection
-        title="Need a Custom Industry Solution?"
-        description="Our experts understand the unique challenges and opportunities in each sector."
-        buttonText="Discuss Your Industry"
+        title={t('industriesPage.cta.title')}
+        description={t('industriesPage.cta.description')}
+        buttonText={t('industriesPage.cta.button')}
       />
     </>
   );
