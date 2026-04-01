@@ -57,7 +57,8 @@ const groupsStructure = [
 ];
 
 export default function IndustriesPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
 
   // Create localized Industry Groups data
   const industryGroups = groupsStructure.map(group => ({
@@ -133,7 +134,7 @@ export default function IndustriesPage() {
 
       <section className="section-padding">
         <div className="container-custom">
-          <div className="flex gap-12 flex-col lg:flex-row">
+          <div className={`flex gap-12 flex-col lg:flex-row ${isRTL ? 'lg:flex-row-reverse' : ''}`}>
             {/* Sticky Navigation - Desktop */}
             <div className="hidden lg:block w-72 shrink-0">
               <div className="sticky top-28">
@@ -142,7 +143,7 @@ export default function IndustriesPage() {
                     <button
                       key={group.name}
                       onClick={() => scrollToGroup(group.originalName)}
-                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-start transition-all ${activeGroup === group.name
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${isRTL ? 'text-right' : 'text-left'} ${activeGroup === group.name
                         ? 'bg-primary text-primary-foreground'
                         : 'text-muted-foreground hover:bg-muted hover:text-foreground'
                         }`}
@@ -164,7 +165,7 @@ export default function IndustriesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                   viewport={{ once: true, margin: '-100px' }}
-                  className="scroll-mt-28"
+                  className={`scroll-mt-28 ${isRTL ? 'text-right' : 'text-left'}`}
                 >
                   <h2 className="text-2xl md:text-3xl font-heading font-bold text-secondary mb-8 pb-4 border-b border-border/50">
                     {group.name}
@@ -181,9 +182,9 @@ export default function IndustriesPage() {
                         viewport={{ once: true }}
                         className="bg-card p-6 rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all scroll-mt-28"
                       >
-                        <div className="flex items-start gap-4 mb-4">
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                            <industry.icon className="w-6 h-6 text-primary" />
+                        <div className={`flex items-start gap-4 mb-4`}>
+                          <div className="flex items-center justify-center shrink-0 pt-1">
+                            <industry.icon className="w-9 h-9 text-primary" />
                           </div>
                           <div>
                             <h3 className="text-lg font-heading font-semibold text-secondary mb-2">

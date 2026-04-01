@@ -49,10 +49,10 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled || !isHomePage
-          ? 'bg-background/95 backdrop-blur-md shadow-md lg:bg-background/95 lg:backdrop-blur-md lg:shadow-md'
+        isScrolled
+          ? 'bg-background/95 backdrop-blur-md shadow-md'
           : 'bg-transparent'
-      } ${isScrolled && 'max-lg:bg-transparent max-lg:backdrop-blur-none max-lg:shadow-none'}`}
+      }`}
       role="banner"
     >
       <nav className="container-custom" aria-label="Main navigation">
@@ -60,7 +60,7 @@ export default function Navbar() {
           {/* Logo - Hidden on mobile after scroll */}
           <Link 
             to="/" 
-            className={`flex items-center gap-3 transition-opacity duration-300 ${isScrolled && 'lg:opacity-100 opacity-0 pointer-events-none lg:pointer-events-auto'}`} 
+            className={`flex items-center gap-3 transition-opacity duration-300 ${isScrolled ? 'lg:opacity-100 opacity-0 pointer-events-none lg:pointer-events-auto' : 'opacity-100 outline-none'}`} 
             aria-label="Sustivance Consulting - Home"
           >
             <img
@@ -69,10 +69,10 @@ export default function Navbar() {
               className="h-14 w-auto"
             />
             <div className="flex flex-col">
-              <span className={`font-heading font-bold text-lg tracking-wide ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`}>
+              <span className={`font-heading font-bold text-lg tracking-wide ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`}>
                 {t('brand.name')}
               </span>
-              <span className={`text-xs tracking-wider ${isScrolled || !isHomePage ? 'text-muted-foreground' : 'text-primary-foreground/80'}`}>
+              <span className={`text-xs tracking-wider ${isScrolled ? 'text-muted-foreground' : 'text-primary-foreground/80'}`}>
                 {t('brand.subtitle')}
               </span>
             </div>
@@ -90,7 +90,7 @@ export default function Navbar() {
                   >
                     <Link
                       to="/services"
-                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
+                      className={`flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors rounded-full hover:bg-muted/50 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'
                         }`}
                       role="menuitem"
                       aria-haspopup="true"
@@ -128,7 +128,7 @@ export default function Navbar() {
                 ) : (
                   <Link
                     to={link.href}
-                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg hover:bg-muted/50 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'
+                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-full hover:bg-muted/50 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'
                       } ${location.pathname === link.href ? 'bg-muted/50' : ''}`}
                     role="menuitem"
                     aria-current={location.pathname === link.href ? 'page' : undefined}
@@ -140,10 +140,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <LanguageSwitcher />
-            <Button asChild variant={isScrolled || !isHomePage ? "default" : "hero"}>
+            <LanguageSwitcher isScrolled={isScrolled} />
+            <Button asChild variant={isScrolled ? "default" : "hero"}>
               <Link to="/contact">{t('nav.consultation')}</Link>
             </Button>
           </div>
@@ -161,9 +160,9 @@ export default function Navbar() {
               aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
-                <X className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
+                <X className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
               ) : (
-                <Menu className={`w-6 h-6 ${isScrolled || !isHomePage ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
+                <Menu className={`w-6 h-6 ${isScrolled ? 'text-foreground' : 'text-primary-foreground'}`} aria-hidden="true" />
               )}
             </button>
           </div>
@@ -228,7 +227,7 @@ export default function Navbar() {
                     ) : (
                       <Link
                         to={link.href}
-                        className="block px-4 py-3 text-foreground font-medium hover:bg-muted/50 rounded-lg text-start"
+                        className="block px-4 py-3 text-foreground font-medium hover:bg-muted/50 rounded-full text-start"
                         role="menuitem"
                         aria-current={location.pathname === link.href ? 'page' : undefined}
                       >

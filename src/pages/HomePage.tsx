@@ -117,15 +117,15 @@ export default function HomePage() {
 
               {/* Quick benefits list */}
               <ul className="flex flex-wrap gap-x-6 gap-y-2 text-primary-foreground/80 mb-8">
-                <li className="flex items-center gap-2">
+                <li className={`flex items-center gap-2`}>
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
                   <span>{t('hero.marketEntry')}</span>
                 </li>
-                <li className="flex items-center gap-2">
+                <li className={`flex items-center gap-2`}>
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
                   <span>{t('hero.policyResearch')}</span>
                 </li>
-                <li className="flex items-center gap-2">
+                <li className={`flex items-center gap-2`}>
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
                   <span>{t('hero.sustainability')}</span>
                 </li>
@@ -139,7 +139,7 @@ export default function HomePage() {
                     <ArrowRight className={`w-5 h-5 transition-transform ${isRTL ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} aria-hidden="true" />
                   </a>
                 </Button>
-                <Button asChild variant="hero-outline" size="xl">
+                <Button asChild variant="ghost" size="xl" className="text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/10">
                   <Link to="/services">{t('hero.viewServices')}</Link>
                 </Button>
               </div>
@@ -154,12 +154,12 @@ export default function HomePage() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-eco/30 rounded-3xl blur-2xl" aria-hidden="true" />
                 <img
-                  src="https://images.unsplash.com/photo-1466442929976-97f336a657be?w=800&auto=format&fit=crop"
-                  alt="Modern Riyadh cityscape"
+                  src="https://images.unsplash.com/photo-1623680904963-5580d963e18e?auto=format&fit=crop&q=80&w=1200"
+                  alt="Historic Saudi building"
                   className="relative rounded-3xl shadow-2xl"
                   loading="eager"
-                  width="800"
-                  height="600"
+                  width="1200"
+                  height="800"
                 />
               </div>
             </motion.div>
@@ -195,10 +195,10 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 id="intro-heading" className="text-2xl md:text-3xl font-heading font-bold text-secondary mb-6">
+              <h2 id="intro-heading" className={`text-2xl md:text-3xl font-heading font-bold text-secondary mb-6 ${isRTL ? 'text-right lg:text-center' : 'text-left lg:text-center'}`}>
                 {t('home.intro.title')}
               </h2>
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+              <p className={`text-lg md:text-xl text-muted-foreground leading-relaxed ${isRTL ? 'text-right lg:text-center' : 'text-left lg:text-center'}`}>
                 <Trans i18nKey="home.intro.description">
                   Whether you're entering the Saudi market... <strong className="text-foreground">Sustivance Consulting</strong> ...
                 </Trans>
@@ -226,8 +226,8 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 className="bg-card p-6 rounded-2xl shadow-card border border-border/50"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <item.icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                <div className="mb-4">
+                  <item.icon className="w-8 h-8 text-primary" aria-hidden="true" />
                 </div>
                 <h3 className="font-heading font-semibold text-secondary mb-2">
                   {t(`home.whyChooseUs.items.${item.id}.title`)}
@@ -294,8 +294,8 @@ export default function HomePage() {
                   className="group flex flex-col items-center p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all"
                   aria-label={`Learn about our ${t(`home.industries.items.${area.id}`)} consulting services`}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                    <area.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" aria-hidden="true" />
+                  <div className="mb-4 group-hover:scale-110 transition-transform">
+                    <area.icon className="w-8 h-8 text-primary transition-colors" aria-hidden="true" />
                   </div>
                   <span className="text-sm font-medium text-secondary text-center group-hover:text-primary transition-colors">
                     {t(`home.industries.items.${area.id}`)}

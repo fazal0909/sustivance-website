@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useParams, Navigate } from 'react-router-dom';
 import HeroHeader from '@/components/sections/HeroHeader';
 import CTASection from '@/components/sections/CTASection';
+import SEO from '@/components/SEO';
 import {
   BarChart3,
   Briefcase,
@@ -23,7 +24,8 @@ const icons: Record<string, any> = {
 };
 
 export default function ServicePage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const { slug } = useParams();
 
   // Validate slug
@@ -39,25 +41,45 @@ export default function ServicePage() {
 
   return (
     <>
+      <SEO 
+        title={title} 
+        description={subtitle} 
+        canonical={`/services/${slug}`}
+      />
       <HeroHeader title={title} subtitle={subtitle} />
 
       <section className="section-padding">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+            <motion.div 
+              initial={{ opacity: 0, x: isRTL ? 20 : -20 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.5 }} 
+              viewport={{ once: true }}
+              className={isRTL ? 'text-right' : 'text-left'}
+            >
               <h2 className="text-2xl font-heading font-bold text-secondary mb-6">{t('servicesPage.details.common.challenges')}</h2>
               <ul className="space-y-4">
                 {challenges.map((challenge, i) => (
-                  <li key={i} className="flex gap-3"><span className="text-accent font-bold text-lg">•</span><span className="text-muted-foreground">{challenge}</span></li>
+                  <li key={i} className={`flex gap-3 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    <span className="text-accent font-bold text-lg">•</span>
+                    <span className="text-muted-foreground">{challenge}</span>
+                  </li>
                 ))}
               </ul>
             </motion.div>
-            <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+            <motion.div 
+              initial={{ opacity: 0, x: isRTL ? -20 : 20 }} 
+              whileInView={{ opacity: 1, x: 0 }} 
+              transition={{ duration: 0.5 }} 
+              viewport={{ once: true }}
+              className={isRTL ? 'text-right' : 'text-left'}
+            >
               <h2 className="text-2xl font-heading font-bold text-secondary mb-6">{t('servicesPage.details.common.solutions')}</h2>
               <div className="grid gap-4">
                 {solutions.map((sol, i) => (
                   <div key={i} className="p-4 bg-card rounded-xl border border-border/50">
-                    <div className="flex gap-3">
+                    <div className={`flex gap-3 ${isRTL ? 'text-right' : 'text-left'}`}>
                       <CheckCircle className="w-5 h-5 text-eco shrink-0 mt-0.5" />
                       <div>
                         <h3 className="font-semibold text-secondary mb-1">{sol.title}</h3>

@@ -1,7 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-export default function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+    isScrolled?: boolean;
+}
+
+export default function LanguageSwitcher({ isScrolled }: LanguageSwitcherProps) {
     const { i18n } = useTranslation();
     const isRTL = i18n.language === 'ar';
 

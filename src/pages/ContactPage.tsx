@@ -1,7 +1,8 @@
 import { motion } from 'framer-motion';
 import HeroHeader from '@/components/sections/HeroHeader';
 import { Button } from '@/components/ui/button';
-import { Mail, Phone, MapPin, Clock, MessageCircle, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, ArrowRight } from 'lucide-react';
+import WhatsAppIcon from '@/components/icons/WhatsAppIcon';
 import SEO from '@/components/SEO';
 import { useTranslation } from 'react-i18next';
 
@@ -64,8 +65,8 @@ export default function ContactPage() {
               </p>
 
               <div className="bg-card p-8 rounded-2xl border border-border/50 text-center">
-                <div className="w-20 h-20 rounded-full bg-eco/10 flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-10 h-10 text-eco" />
+                <div className="flex items-center justify-center mx-auto mb-6">
+                  <WhatsAppIcon className="w-14 h-14 text-eco" />
                 </div>
                 <h3 className="text-xl font-heading font-semibold text-secondary mb-2">
                   {t('contact.conversation.whatsapp.title')}
@@ -106,14 +107,14 @@ export default function ContactPage() {
               <h2 className="text-2xl font-heading font-bold text-secondary mb-6">
                 {t('contact.info.title')}
               </h2>
-              <div className="space-y-6 mb-8">
+              <div className="space-y-8 mb-8">
                 {contactInfo.map((info) => (
                   <div key={info.title} className="flex gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <info.icon className="w-5 h-5 text-primary" />
+                    <div className="flex items-start justify-center shrink-0 pt-1">
+                      <info.icon className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium text-secondary">{info.title}</p>
+                      <p className="font-semibold text-secondary text-lg mb-1">{info.title}</p>
                       {info.href ? (
                         <a
                           href={info.href}

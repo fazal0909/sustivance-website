@@ -68,10 +68,10 @@ export default function ServicesPage() {
                   className="scroll-mt-28"
                 >
                   <div className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-                    <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                      <div className="flex items-center gap-4 mb-4">
-                        <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center">
-                          <Icon className="w-7 h-7 text-primary" />
+                    <div className={index % 2 === 1 ? 'lg:order-2 text-right' : (isRTL ? 'text-right' : 'text-left')}>
+                      <div className={`flex items-center gap-4 mb-4`}>
+                        <div className="flex items-center justify-center">
+                          <Icon className="w-10 h-10 text-primary" />
                         </div>
                         <h2 className="text-2xl md:text-3xl font-heading font-bold text-secondary">
                           {t(`servicesPage.list.${id}.title`)}
@@ -88,13 +88,13 @@ export default function ServicesPage() {
                       </Button>
                     </div>
 
-                    <div className={`bg-card p-6 rounded-2xl border border-border/50 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div className={`bg-card p-6 rounded-2xl border border-border/50 ${index % 2 === 1 ? 'lg:order-1' : ''} ${isRTL ? 'text-right' : 'text-left'}`}>
                       <h3 className="font-heading font-semibold text-secondary mb-4">
                         {t('servicesPage.offer')}
                       </h3>
                       <ul className="space-y-3">
                         {offerings.map((offering, i) => (
-                          <li key={i} className="flex gap-3">
+                          <li key={i} className={`flex gap-3`}>
                             <CheckCircle className="w-5 h-5 text-eco shrink-0 mt-0.5" />
                             <span className="text-muted-foreground">{offering}</span>
                           </li>
