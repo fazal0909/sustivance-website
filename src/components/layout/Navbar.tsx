@@ -168,31 +168,51 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Overlay */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               id="mobile-menu"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-              className="lg:hidden bg-card border-t border-border"
+              initial={{ opacity: 0, x: i18n.language === 'ar' ? '100%' : '-100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: i18n.language === 'ar' ? '100%' : '-100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="fixed inset-0 z-[60] lg:hidden bg-background/95 backdrop-blur-xl flex flex-col pt-24 px-6 overflow-y-auto"
               role="menu"
             >
-              <div className="py-4 space-y-2">
-                {navLinksList.map((link) => (
-                  <div key={link.id} role="none">
+              {/* Close Button Inside Overlay */}
+              <div className="absolute top-6 left-6 right-6 flex items-center justify-between">
+                <div className={i18n.language === 'ar' ? 'order-last' : 'order-first'}>
+                  <LanguageSwitcher />
+                </div>
+                <button
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="p-2 text-secondary"
+                  aria-label="Close menu"
+                >
+                  <X className="w-8 h-8" aria-hidden="true" />
+                </button>
+              </div>
+
+              {/* Navigation Items with Staggered Entrance */}
+              <div className="flex flex-col space-y-1 mt-4">
+                {navLinksList.map((link, index) => (
+                  <motion.div
+                    key={link.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 + index * 0.05 }}
+                    role="none"
+                  >
                     {link.hasDropdown ? (
-                      <div>
+                      <div className="py-2">
                         <button
                           onClick={() => setIsServicesOpen(!isServicesOpen)}
-                          className="flex items-center justify-between w-full px-4 py-3 text-foreground font-medium"
+                          className="flex items-center justify-between w-full py-4 text-2xl font-bold text-secondary text-start group"
                           aria-expanded={isServicesOpen}
-                          role="menuitem"
                         >
-                          {t(`nav.${link.id}`)}
-                          <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
+                          <span className="group-hover:text-primary transition-colors">{t(`nav.${link.id}`)}</span>
+                          <ChevronDown className={`w-6 h-6 transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
                         </button>
                         <AnimatePresence>
                           {isServicesOpen && (
@@ -200,13 +220,11 @@ export default function Navbar() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
-                              className="bg-muted/50"
-                              role="menu"
+                              className="px-4 space-y-4 pb-4 overflow-hidden border-r-2 border-primary/20 mr-2 ml-2"
                             >
                               <Link
                                 to="/services"
-                                className="block px-8 py-2 text-sm text-primary font-medium hover:text-foreground text-start"
-                                role="menuitem"
+                                className="block text-lg text-primary font-semibold hover:text-primary/80 transition-colors text-start"
                               >
                                 {t('nav.viewAllServices')}
                               </Link>
@@ -214,8 +232,7 @@ export default function Navbar() {
                                 <Link
                                   key={service.id}
                                   to={service.href}
-                                  className="block px-8 py-2 text-sm text-muted-foreground hover:text-foreground text-start"
-                                  role="menuitem"
+                                  className="block text-lg text-muted-foreground hover:text-secondary transition-colors text-start"
                                 >
                                   {t(`footer.services.${service.id}`)}
                                 </Link>
@@ -227,22 +244,29 @@ export default function Navbar() {
                     ) : (
                       <Link
                         to={link.href}
-                        className="block px-4 py-3 text-foreground font-medium hover:bg-muted/50 rounded-full text-start"
-                        role="menuitem"
+                        className={`block py-4 text-2xl font-bold transition-colors text-start ${
+                          location.pathname === link.href ? 'text-primary' : 'text-secondary hover:text-primary'
+                        }`}
                         aria-current={location.pathname === link.href ? 'page' : undefined}
                       >
                         {t(`nav.${link.id}`)}
                       </Link>
                     )}
-                  </div>
+                  </motion.div>
                 ))}
-                <div className="px-4 pt-4">
-                  <Button asChild className="w-full">
-                    <Link to="/contact">{t('nav.consultation')}</Link>
-                  </Button>
-
-                </div>
               </div>
+
+              {/* Consultation Button at Bottom */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="mt-auto py-10"
+              >
+                <Button asChild size="xl" className="w-full text-lg py-7 rounded-2xl shadow-xl bg-primary hover:bg-primary/90">
+                  <Link to="/contact">{t('nav.consultation')}</Link>
+                </Button>
+              </motion.div>
             </motion.div>
           )}
         </AnimatePresence>

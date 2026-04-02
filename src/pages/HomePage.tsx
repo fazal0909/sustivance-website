@@ -82,21 +82,32 @@ export default function HomePage() {
       <SEO canonical="/" />
       {/* Hero Section - Problem → Solution above the fold */}
       <section
-        className="relative min-h-screen flex items-center gradient-hero overflow-hidden"
+        className="relative min-h-screen flex items-center overflow-hidden gradient-hero lg:bg-secondary"
         aria-label="Hero section"
       >
-        {/* Background decorations */}
+        {/* Background image and overlay - Desktop only */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center hidden lg:block"
+          style={{ 
+            backgroundImage: `url('/hero-bg.jpeg')` 
+          }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 gradient-hero hidden lg:block opacity-85" aria-hidden="true" />
+        
+        {/* Background decorations - Full opacity on mobile, softened on desktop background image */}
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-eco/10 rounded-full blur-3xl" />
+          <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl lg:opacity-50" />
+          <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-eco/10 rounded-full blur-3xl lg:opacity-50" />
         </div>
 
         <div className="container-custom relative z-10 pt-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="lg:max-w-4xl lg:mx-auto lg:text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
+              className="flex flex-col lg:items-center"
             >
               {/* Trust badge */}
               <span className="inline-block px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full text-primary-foreground text-sm font-medium mb-6">
@@ -111,12 +122,12 @@ export default function HomePage() {
               </h1>
 
               {/* Clear benefit statement */}
-              <p className="text-xl text-primary-foreground/90 leading-relaxed mb-4 max-w-xl">
+              <p className="text-xl text-primary-foreground/90 leading-relaxed mb-8 max-w-2xl lg:mx-auto">
                 {t('hero.description')}
               </p>
 
               {/* Quick benefits list */}
-              <ul className="flex flex-wrap gap-x-6 gap-y-2 text-primary-foreground/80 mb-8">
+              <ul className="flex flex-wrap lg:justify-center gap-x-6 gap-y-2 text-primary-foreground/80 mb-10">
                 <li className={`flex items-center gap-2`}>
                   <CheckCircle className="w-4 h-4 text-accent" aria-hidden="true" />
                   <span>{t('hero.marketEntry')}</span>
@@ -132,7 +143,7 @@ export default function HomePage() {
               </ul>
 
               {/* Primary CTA - Action-oriented */}
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap lg:justify-center gap-4">
                 <Button asChild variant="hero" size="xl">
                   <a href="https://wa.me/966578484894" target="_blank" rel="noopener noreferrer" className="group">
                     {t('hero.cta')}
@@ -142,25 +153,6 @@ export default function HomePage() {
                 <Button asChild variant="ghost" size="xl" className="text-primary-foreground hover:text-primary-foreground hover:bg-primary-foreground/10">
                   <Link to="/services">{t('hero.viewServices')}</Link>
                 </Button>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="hidden lg:block"
-            >
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 to-eco/30 rounded-3xl blur-2xl" aria-hidden="true" />
-                <img
-                  src="https://images.unsplash.com/photo-1623680904963-5580d963e18e?auto=format&fit=crop&q=80&w=1200"
-                  alt="Historic Saudi building"
-                  className="relative rounded-3xl shadow-2xl"
-                  loading="eager"
-                  width="1200"
-                  height="800"
-                />
               </div>
             </motion.div>
           </div>
