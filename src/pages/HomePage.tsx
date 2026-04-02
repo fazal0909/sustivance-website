@@ -280,10 +280,11 @@ export default function HomePage() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.05 }}
                 viewport={{ once: true }}
+                className="h-full"
               >
                 <Link
                   to={`/industries#${industryIdMap[area.id] || area.id}`}
-                  className="group flex flex-col items-center p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all"
+                  className="group flex flex-col items-center justify-center p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/50 hover:shadow-lg transition-all h-full w-full min-h-[160px]"
                   aria-label={`Learn about our ${t(`home.industries.items.${area.id}`)} consulting services`}
                 >
                   <div className="mb-4 group-hover:scale-110 transition-transform">
