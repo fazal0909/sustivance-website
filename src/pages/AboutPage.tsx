@@ -62,8 +62,8 @@ export default function AboutPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-eco/20 rounded-3xl blur-2xl" />
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop"
-                alt="Team collaboration"
+                src="/about-team.png"
+                alt="Sustivance Team"
                 className="relative rounded-3xl shadow-xl"
               />
             </motion.div>
